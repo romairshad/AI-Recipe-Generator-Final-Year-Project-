@@ -13,10 +13,10 @@ const RecipeDetails = () => {
 
     }
     useEffect(()=>{
-        if(info != ""){
+        if(info !== ""){
             details();
          }
-    },[])
+    },[mealid])
     
 
 

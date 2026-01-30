@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Footer from '../Components/Footer'
 import { auth,db } from './Firebase'
 import { getDoc,doc } from 'firebase/firestore'
 import { signOut } from 'firebase/auth'
  const Home = () => {
   const [details , setdetails]=useState(null)
-  const [curuser,setcuruser]= useState(null)
+  const [setcuruser]= useState(null)
   const navigate = useNavigate();
 
   const fetchdata = async()=>{

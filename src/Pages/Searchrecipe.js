@@ -22,7 +22,7 @@ const Searchrecipe = () => {
   }
   useEffect(() => {
     searchRecipe();
-  }, []);
+  }, [searchRecipe]);
 
   const handleForm = (event)=>{
       event.preventDefault();

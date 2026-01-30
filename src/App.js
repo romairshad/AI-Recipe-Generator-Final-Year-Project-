@@ -9,7 +9,7 @@ import RecipeDetails from './Pages/RecipeDetails'
 import Layout from './Pages/Layout'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
-import Footer_layout from './Pages/Footer_layout'
+
 
 const App = () => {
   return (
