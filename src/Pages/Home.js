@@ -23,9 +23,10 @@ import { signOut } from 'firebase/auth'
       }
     })
   }
-  useEffect(()=>{
+
+useEffect(()=>{
     fetchdata();
-  },[])
+},[])
 
   const handleLogout = async () => {
     try {

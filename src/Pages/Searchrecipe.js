@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import RecipeCard from '../Components/RecipeCard';
 import Search from '../Components/Search';
 
@@ -12,14 +12,15 @@ const Searchrecipe = () => {
   const [query, setquery] = useState('');
   const [recipes, setrecipes] = useState([])
 
-  const searchRecipe = async () => {
+  const searchRecipe = useCallback(async () => {
     setdata(true)
     const url = get + query;
     const res = await fetch(url);
     const jsData = await res.json();
     setrecipes(jsData.meals)
     setdata(false)
-  }
+  }, [query])(false)
+  
   useEffect(() => {
     searchRecipe();
   }, [searchRecipe]);
