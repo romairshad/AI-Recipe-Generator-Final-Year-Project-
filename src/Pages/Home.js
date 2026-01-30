@@ -5,13 +5,11 @@ import { getDoc,doc } from 'firebase/firestore'
 import { signOut } from 'firebase/auth'
  const Home = () => {
   const [details , setdetails]=useState(null)
-  const [curuser, setcuruser]= useState(null)
   const navigate = useNavigate();
 
   useEffect(()=>{
     const fetchdata = async()=>{
       auth.onAuthStateChanged(async (user)=>{
-        setcuruser(user)
         console.log(user)
         if(user){
         const dbfetch = doc(db,"Users",user.uid)
@@ -31,7 +29,6 @@ import { signOut } from 'firebase/auth'
     try {
       await signOut(auth);
       setdetails(null);
-      setcuruser(null);
       navigate('/'); // Optional: redirect to home or login page
     } catch (error) {
       console.error('Logout failed:', error);
