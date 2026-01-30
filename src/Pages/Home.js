@@ -5,28 +5,27 @@ import { getDoc,doc } from 'firebase/firestore'
 import { signOut } from 'firebase/auth'
  const Home = () => {
   const [details , setdetails]=useState(null)
-  const [setcuruser]= useState(null)
+  const [curuser, setcuruser]= useState(null)
   const navigate = useNavigate();
 
-  const fetchdata = async()=>{
-    auth.onAuthStateChanged(async (user)=>{
-      setcuruser(user)
-      console.log(user)
-      if(user){
-      const dbfetch = doc(db,"Users",user.uid)
-      const docuser = await getDoc(dbfetch)
-      if( docuser.exists()){
-        setdetails(docuser.data())
-      }
-    }else {
-        setdetails(null); 
-      }
-    })
-  }
-
-useEffect(()=>{
+  useEffect(()=>{
+    const fetchdata = async()=>{
+      auth.onAuthStateChanged(async (user)=>{
+        setcuruser(user)
+        console.log(user)
+        if(user){
+        const dbfetch = doc(db,"Users",user.uid)
+        const docuser = await getDoc(dbfetch)
+        if( docuser.exists()){
+          setdetails(docuser.data())
+        }
+      }else {
+          setdetails(null); 
+        }
+      })
+    }
     fetchdata();
-},[])
+  },[])
 
   const handleLogout = async () => {
     try {

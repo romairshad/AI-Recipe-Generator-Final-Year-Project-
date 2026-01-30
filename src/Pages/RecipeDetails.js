@@ -5,18 +5,17 @@ const RecipeDetails = () => {
     const {mealid} = useParams();
     const [info,setinfo]= useState();
 
-    const details = async ()=>{
-        const get = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`)
-        const url = await get.json();
-        console.log(url)
-        setinfo(url.meals[0])
-
-    }
     useEffect(()=>{
+        const details = async ()=>{
+            const get = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`)
+            const url = await get.json();
+            console.log(url)
+            setinfo(url.meals[0])
+        }
         if(mealid){
             details();
          }
-    },[mealid, details])
+    },[mealid])
     
 
 
